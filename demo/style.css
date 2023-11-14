@@ -61,6 +61,7 @@ button {
 textarea,
 input,
 button {
+  width: 100%;
   min-height: 40px;
   outline: none;
   padding: 5px 10px;
@@ -68,4 +69,13 @@ button {
   font-size: 16px;
   border: 1px solid;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .main-container .mode-con,
+  .encoding-con,
+  .decoding-con {
+    width: 90%;
+  }
 }

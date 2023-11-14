@@ -1,4 +1,4 @@
-// Initialized MatrixC
+// Initialized MatrixC 1.0.0
 
 export const MatrixCipher = {
   // Define the set of characters used for encryption and decryption
