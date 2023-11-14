@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Matrix Cipher</title>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!--math.js library-->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.0.0/math.min.js"></script>
+
+</head>
+
+<body>
+  <h1 class="title">Encryption & Decryption Using Matrices</h1>
+  <div class="main-container">
+    <div class="mode-con">
+      <button id="encode-mode-btn" onclick="encodemodeBtn()">Encode</button>
+      <button id="decode-mode-btn" onclick="decodemodeBtn()">Decode</button>
+    </div>
+    <div class="encoding-con">
+      <textarea id="encording-inp" rows="8" cols="40" placeholder="Message to Encrypt"></textarea>
+      <input type="number" id="encode-key" placeholder="Passkey" oninput="if((this.value).length>4) this.value = (this.value).slice(0, -1)">
+      <button id="encode-btn">Encode</button>
+      <textarea id="encording-out" rows="8" cols="40" readonly></textarea>
+      <button type="submit" id="share-btn">Share</button>
+    </div>
+
+    <div class="decoding-con">
+      <textarea id="decording-inp" rows="8" cols="40" placeholder="Message to Decrypt"></textarea>
+      <input type="number" id="decode-key" placeholder="Passkey" oninput="if((this.value).length>4) this.value = (this.value).slice(0, -1)">
+      <button id="decode-btn">Decode</button>
+      <textarea id="decording-out" rows="8" cols="40" readonly></textarea>
+    </div>
+  </div>
+
+  <script>
+    let encodeModeBtn = document.querySelector('#encode-mode-btn');
+    let decodeModeBtn = document.querySelector('#decode-mode-btn');
+
+    let encodeCon = document.querySelector('.encoding-con');
+    let decodeCon = document.querySelector('.decoding-con');
+
+    function encodemodeBtn() {
+      encodeCon.style.display = 'flex';
+      decodeCon.style.display = 'none';
+      encodeModeBtn.style.backgroundColor = '#4FBFFF';
+      decodeModeBtn.style.background = 'none';
+    };
+
+    function decodemodeBtn() {
+      decodeCon.style.display = 'flex';
+      encodeCon.style.display = 'none';
+      decodeModeBtn.style.backgroundColor = '#4FBFFF';
+      encodeModeBtn.style.background = 'none';
+    };
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let text = urlParams.get('dtext');
+
+      if (text != null) {
+        decodemodeBtn()
+        document.querySelector('#decording-inp').value = text;
+      }
+    }
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
