@@ -31,7 +31,6 @@ export const MatrixCipher = {
       const char = this.characters[number - 1];
       result += char;
     }
-
     // Check for 'undefined' characters in result (invalid PIN)
     if (result.includes('undefined')) {
       return 'Invalid PIN!';
@@ -68,7 +67,6 @@ export const MatrixCipher = {
   // Decrypt text using a key matrix
   decryption(text, key) {
     let inputArray = text.split(',');
-    console.log(inputArray)
 
     const inputMatrix = math.reshape(inputArray, [2, inputArray.length / 2]); //2xn
     let Key = this.getKeyMatrix(key);

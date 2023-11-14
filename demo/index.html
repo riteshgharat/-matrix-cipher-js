@@ -34,6 +34,8 @@
     </div>
   </div>
 
+  <script type="module" src="main.js"></script>
+
   <script>
     let encodeModeBtn = document.querySelector('#encode-mode-btn');
     let decodeModeBtn = document.querySelector('#decode-mode-btn');
@@ -46,14 +48,15 @@
       decodeCon.style.display = 'none';
       encodeModeBtn.style.backgroundColor = '#4FBFFF';
       decodeModeBtn.style.background = 'none';
-    };
+    }
 
     function decodemodeBtn() {
       decodeCon.style.display = 'flex';
       encodeCon.style.display = 'none';
       decodeModeBtn.style.backgroundColor = '#4FBFFF';
       encodeModeBtn.style.background = 'none';
-    };
+    }
+    
     window.onload = function() {
       const urlParams = new URLSearchParams(window.location.search);
       let text = urlParams.get('dtext');
@@ -64,7 +67,6 @@
       }
     }
   </script>
-  <script type="module" src="/demo/main.js"></script>
 
   <!--math.js library-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.0.0/math.min.js"></script>
