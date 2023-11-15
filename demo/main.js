@@ -15,16 +15,18 @@ let decodeKey = document.querySelector('#decode-key');
 encodeBtn.addEventListener('click', () => {
   if (encordingInp.value && encodeKey.value) {
     const encryptedText = mc.encryption(encordingInp.value, encodeKey.value);
+    console.log(encryptedText);
     encordingOut.value = encryptedText;
   }
   else {
     alert('Enter required fields');
   }
-})
+});
 
 decodeBtn.addEventListener('click', () => {
   if (decordingInp.value && decodeKey.value) {
     const decryptedText = mc.decryption(decordingInp.value, decodeKey.value);
+    console.log(decryptedText);
     decordingOut.value = decryptedText;
   }
   else {
@@ -37,7 +39,7 @@ document.querySelector('#share-btn').addEventListener('click', () => {
     navigator.share({
         title: 'MatrixCipherJS',
         text: 'Check out this example!',
-        url: `${location.href}?dtext=${encordingOut.value}`
+        url: `${location.href}/demo?dtext=${encordingOut.value}`
       })
       .then(() => console.log('Shared successfully'))
       .catch(error => console.error('Error sharing:', error));

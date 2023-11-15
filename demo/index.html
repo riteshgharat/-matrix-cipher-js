@@ -9,6 +9,9 @@
   <title>Matrix Cipher</title>
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
+  <!--math.js library-->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.0.0/math.min.js"></script>
+
 </head>
 
 <body>
@@ -20,7 +23,7 @@
     </div>
     <div class="encoding-con">
       <textarea id="encording-inp" rows="8" cols="40" placeholder="Message to Encrypt"></textarea>
-      <input type="number" id="encode-key" placeholder="Passkey" oninput="if((this.value).length>4) this.value = (this.value).slice(0, -1)">
+      <input type="number" id="encode-key" placeholder="Passkey" oninput="if((this.value).length>4||(this.value).includes(0)) this.value = (this.value).slice(0, -1)">
       <button id="encode-btn">Encode</button>
       <textarea id="encording-out" rows="8" cols="40" readonly></textarea>
       <button type="submit" id="share-btn">Share</button>
@@ -28,13 +31,11 @@
 
     <div class="decoding-con">
       <textarea id="decording-inp" rows="8" cols="40" placeholder="Message to Decrypt"></textarea>
-      <input type="number" id="decode-key" placeholder="Passkey" oninput="if((this.value).length>4) this.value = (this.value).slice(0, -1)">
+      <input type="number" id="decode-key" placeholder="Passkey" oninput="if((this.value).length>4||(this.value).includes(0)) this.value = (this.value).slice(0, -1)">
       <button id="decode-btn">Decode</button>
       <textarea id="decording-out" rows="8" cols="40" readonly></textarea>
     </div>
   </div>
-
-  <script type="module" src="main.js"></script>
 
   <script>
     let encodeModeBtn = document.querySelector('#encode-mode-btn');
@@ -48,15 +49,15 @@
       decodeCon.style.display = 'none';
       encodeModeBtn.style.backgroundColor = '#4FBFFF';
       decodeModeBtn.style.background = 'none';
-    }
+    };
 
     function decodemodeBtn() {
       decodeCon.style.display = 'flex';
       encodeCon.style.display = 'none';
       decodeModeBtn.style.backgroundColor = '#4FBFFF';
       encodeModeBtn.style.background = 'none';
-    }
-    
+    };
+
     window.onload = function() {
       const urlParams = new URLSearchParams(window.location.search);
       let text = urlParams.get('dtext');
@@ -67,9 +68,7 @@
       }
     }
   </script>
-
-  <!--math.js library-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.0.0/math.min.js"></script>
+  <script type="module" src="/demo/main.js"></script>
 </body>
 
 </html>

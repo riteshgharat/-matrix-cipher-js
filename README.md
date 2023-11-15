@@ -13,13 +13,13 @@ The Matrix Cipher library provides methods for encrypting and decrypting text us
 ```
 ### Initialization
 ```javascript
-import { MatrixCipher } from 'mc.js';
+import { MatrixCipher } from 'mc-js/mc.js';
 ```
 
 ### Example
 
 ```javascript
-import { MatrixCipher } from 'mc.js;
+import { MatrixCipher } from 'MatrixCryptography';
 
 const text = 'Hello, world!';
 const key = '1234';
