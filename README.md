@@ -1,4 +1,4 @@
-#  Matrix Cipher Library (Matrix Cryptography)
+# [Matrix Cipher Library (Matrix Cryptography)](https://riteshgharat.github.io/matrix-cipher-js/demo/)
 
 ## Overview
 The Matrix Cipher library provides methods for encrypting and decrypting text using matrices. It employs a matrix-based approach to transform characters into numbers and perform encryption and decryption operations.
