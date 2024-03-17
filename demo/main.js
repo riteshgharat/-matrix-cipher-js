@@ -46,7 +46,7 @@ document.querySelector('#share-btn').addEventListener('click', () => {
     navigator.share({
         title: 'MatrixCipherJS',
         text: 'Check out this example!',
-        url: `${location.origin}/demo/?dtext=${encordingOut.value}`
+        url: `${location.origin}/matrix-cipher-js/demo/?dtext=${encordingOut.value}`
       })
       .then(() => console.log('Shared successfully'))
       .catch(error => console.error('Error sharing:', error));
