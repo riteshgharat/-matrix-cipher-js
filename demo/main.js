@@ -1,4 +1,4 @@
-import { MatrixCipher as mc } from '/mc-js/mc.js';
+import { MatrixCipher as mc } from '../mc-js/mc.js';
 
 let encodeBtn = document.querySelector('#encode-btn');
 let decodeBtn = document.querySelector('#decode-btn');
