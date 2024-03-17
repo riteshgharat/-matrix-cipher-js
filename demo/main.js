@@ -14,9 +14,16 @@ let decodeKey = document.querySelector('#decode-key');
 
 encodeBtn.addEventListener('click', () => {
   if (encordingInp.value && encodeKey.value) {
-    const encryptedText = mc.encryption(encordingInp.value, encodeKey.value);
-    console.log(encryptedText);
-    encordingOut.value = encryptedText;
+    try {
+      mc.invKeyMatrix(encodeKey.value);
+
+      const encryptedText = mc.encryption(encordingInp.value, encodeKey.value);
+      //console.log(encryptedText);
+      encordingOut.value = encryptedText;
+
+    } catch (e) {
+      alert('Invalid PIN format, try a new one');
+    }
   }
   else {
     alert('Enter required fields');
@@ -26,7 +33,7 @@ encodeBtn.addEventListener('click', () => {
 decodeBtn.addEventListener('click', () => {
   if (decordingInp.value && decodeKey.value) {
     const decryptedText = mc.decryption(decordingInp.value, decodeKey.value);
-    console.log(decryptedText);
+    //console.log(decryptedText);
     decordingOut.value = decryptedText;
   }
   else {

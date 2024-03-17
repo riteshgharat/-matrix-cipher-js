@@ -1,8 +1,7 @@
 // Initialized MatrixC 1.0.0
-
 export const MatrixCipher = {
   // Define the set of characters used for encryption and decryption
-  characters: ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890+÷=/_<>[]@#₹%^&*()-":;,?!.{}$~\n',
+  characters: ` ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890+÷=/_<>[]@#₹%^&*()-"':;,?!.{}$~`,
 
   // Convert characters to their corresponding numbers based using the character set
   charactersToNumbers(inputString) {
@@ -16,7 +15,7 @@ export const MatrixCipher = {
         result += (index + 1) + ',';
       } else {
         // If character not found in set, add it as it is
-        result += inputString[i];
+        result += '1,';
       }
     }
     return result;
@@ -31,7 +30,6 @@ export const MatrixCipher = {
       const char = this.characters[number - 1];
       result += char;
     }
-
     // Check for 'undefined' characters in result (invalid PIN)
     if (result.includes('undefined')) {
       return 'Invalid PIN!';
@@ -46,6 +44,11 @@ export const MatrixCipher = {
     keyArray = keyArray.map(str => parseInt(str, 10));
     const keyMatrix = math.reshape(keyArray, [2, keyArray.length / 2]);
     return keyMatrix;
+  },
+
+  invKeyMatrix(key) {
+    let Key = this.getKeyMatrix(key);
+    return math.inv(Key);
   },
 
   // Encrypt text using a key matrix
@@ -68,12 +71,19 @@ export const MatrixCipher = {
   // Decrypt text using a key matrix
   decryption(text, key) {
     let inputArray = text.split(',');
-    console.log(inputArray)
+    inputArray = inputArray.map(str => parseInt(str, 10));
+    //console.log(inputArray)
 
     const inputMatrix = math.reshape(inputArray, [2, inputArray.length / 2]); //2xn
-    let Key = this.getKeyMatrix(key);
-    const invKey = math.inv(Key);
+
+    //console.log(inputMatrix);
+
+    const invKey = this.invKeyMatrix(key)
+    //console.log(invKey);
+
     const outputMatrix = math.multiply(invKey, inputMatrix);
+
+    //console.log(outputMatrix);
 
     return this.numbersTocharacters(outputMatrix.toString());
   }
